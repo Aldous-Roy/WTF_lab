@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Basic Styling */
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial; }
+
+        /* Four equal columns for the images */
+        .column {
+            float: left;
+            width: 25%; /* 4 columns = 25% each */
+            padding: 10px;
+        }
+
+        /* Style for the images */
+        .column img {
+            width: 100%; /* Make the images fill the column width */
+            opacity: 0.8; /* Slightly dim */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        .column img:hover {
+            opacity: 1; /* Brighten on hover */
+        }
+
+        /* Clear floats */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Expanded Image Section */
+        .container {
+            position: relative;
+            display: none; /* Hidden by default */
+            text-align: center;
+        }
+        #expandedImg {
+            width: 100%; /* Full width for the expanded image */
+        }
+        #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Close Button */
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center">
+        <h2>Tabbed Image Gallery</h2>
+        <p>Click on the images below:</p>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="row">
+        <div class="column">
+            <img src="nature.jpg" alt="Nature" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="snow.jpg" alt="Snow" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="mountain.jpg" alt="Mountains" onclick="myFunction(this);">
+        </div>
+        <div class="column">
+            <img src="lights.jpg" alt="Lights" onclick="myFunction(this);">
+        </div>
+    </div>
+
+    <!-- Expanded Image Section -->
+    <div class="container">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <img id="expandedImg">
+        <div id="imgtext"></div>
+    </div>
+
+    <!-- JavaScript for Image Click -->
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+
+            // Set the expanded image and caption
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+
+            // Show the expanded image container
+            expandImg.parentElement.style.display = "block";
+        }
+    </script>
+</body>
+</html>
